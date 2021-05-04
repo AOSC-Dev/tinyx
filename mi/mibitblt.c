@@ -659,6 +659,7 @@ miGetImage(pDraw, sx, sy, w, h, format, planeMask, pDst)
     XID			gcv[2];
     PixmapPtr		pPixmap = (PixmapPtr)NULL;
     GCPtr		pGC = NULL;
+    MiBits *            ret = NULL;
 
     depth = pDraw->depth;
     if(format == ZPixmap)
@@ -721,8 +722,9 @@ miGetImage(pDraw, sx, sy, w, h, format, planeMask, pDst)
     }
     else
     {
-	(void) miGetPlane(pDraw, ffs(planeMask) - 1, sx, sy, w, h,
-			  (MiBits *)pDst);
+	if ((ret = miGetPlane(pDraw, ffs(planeMask) - 1, sx, sy, w, h,
+			  (MiBits *)pDst)))
+            free(ret);
     }
 }
 

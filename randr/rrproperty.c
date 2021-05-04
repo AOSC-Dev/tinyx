@@ -285,8 +285,10 @@ RRConfigureOutputProperty(RROutputPtr output, Atom property,
         return (BadAccess);
 
     new_values = malloc(num_values * sizeof(INT32));
-    if (!new_values && num_values)
+    if (!new_values && num_values) {
+        free(prop);
         return BadAlloc;
+    }
     if (num_values)
         memcpy(new_values, values, num_values * sizeof(INT32));
 

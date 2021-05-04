@@ -624,6 +624,8 @@ doListFontsAndAliases(ClientPtr client, LFclosurePtr c)
                                 (ClientSleepProcPtr) doListFontsAndAliases,
                                 (pointer) c);
                 }
+                if (resolved)
+                    free(resolved);
                 return TRUE;
             }
 

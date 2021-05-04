@@ -2020,6 +2020,7 @@ AllocShared(ColormapPtr pmap, Pixel * ppix, int c, int r, int g, int b,
         if (!(ppshared[z] = malloc(sizeof(SHAREDCOLOR)))) {
             for (z++; z < npixShared; z++)
                 free(ppshared[z]);
+            DEALLOCATE_LOCAL(psharedList);
             return FALSE;
         }
     }

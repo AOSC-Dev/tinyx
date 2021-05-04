@@ -565,8 +565,10 @@ AllocateGlyph(xGlyphInfo * gi, int fdepth)
 
     if (globalTotalGlyphPrivateSize) {
         glyph->devPrivates = malloc(globalTotalGlyphPrivateSize);
-        if (!glyph->devPrivates)
+        if (!glyph->devPrivates) {
+            free(glyph);
             return 0;
+        }
 
         SetGlyphPrivatePointers(glyph);
     }

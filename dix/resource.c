@@ -181,8 +181,10 @@ CreateNewResourceType(DeleteType deleteFunc)
         Atom *newnames;
 
         newnames = realloc(ResourceNames, (next + 1) * sizeof(Atom));
-        if (!newnames)
+        if (!newnames) {
+            free(funcs);
             return 0;
+        }
         ResourceNames = newnames;
         ResourceNames[next] = 0;
     }

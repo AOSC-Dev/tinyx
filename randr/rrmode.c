@@ -103,8 +103,10 @@ RRModeGet(xRRModeInfo * modeInfo, const char *name)
     }
 
     mode->mode.id = FakeClientID(0);
-    if (!AddResource(mode->mode.id, RRModeType, (pointer) mode))
+    if (!AddResource(mode->mode.id, RRModeType, (pointer) mode)) {
+        free(newModes);
         return NULL;
+    }
     modes = newModes;
     modes[num_modes++] = mode;
 
