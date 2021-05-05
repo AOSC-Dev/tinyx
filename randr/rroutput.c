@@ -428,7 +428,8 @@ ProcRRGetOutputInfo(ClientPtr client)
         if (client->swapped)
             swapl(&clones[i]);
     }
-    memcpy(name, output->name, output->nameLength);
+    if (extra)
+        memcpy(name, output->name, output->nameLength);
     if (client->swapped) {
         swaps(&rep.sequenceNumber);
         swapl(&rep.length);

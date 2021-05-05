@@ -910,10 +910,9 @@ FlushClient(ClientPtr who, OsCommPtr oc, const char *extraBuf, int extraCount)
 		oco->size = notWritten + BUFSIZE;
 		oco->buf = obuf;
 	    }
-
 	    /* If the amount written extended into the padBuffer, then the
 	       difference "extraCount - written" may be less than 0 */
-	    if ((len = extraCount - written) > 0)
+	    if (extraBuf && (len = extraCount - written) > 0)
 		memmove ((char *)oco->buf + oco->count,
 			 extraBuf + written,
 		       len);

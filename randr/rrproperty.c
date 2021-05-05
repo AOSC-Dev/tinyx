@@ -180,7 +180,7 @@ RRChangeOutputProperty(RROutputPtr output, Atom property, Atom type,
             }
             prop_value->data = data;
         }
-        if (len)
+        if (len && prop_value->data)
             memmove((char *) prop_value->data, (char *) value, totalSize);
         prop_value->size = len;
         prop_value->type = type;

@@ -779,7 +779,8 @@ ProcSetModifierMapping(ClientPtr client)
         if (keyc->modifierKeyMap)
             free(keyc->modifierKeyMap);
         keyc->modifierKeyMap = map;
-        memmove((char *) map, (char *) inputMap, inputMapLen);
+        if (inputMapLen)
+            memmove((char *) map, (char *) inputMap, inputMapLen);
 
         keyc->maxKeysPerModifier = stuff->numKeyPerModifier;
         for (i = 0; i < MAP_LENGTH; i++)

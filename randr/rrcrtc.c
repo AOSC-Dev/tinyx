@@ -259,6 +259,7 @@ RRCrtcSet(RRCrtcPtr crtc,
         crtc->y == y &&
         crtc->rotation == rotation &&
         crtc->numOutputs == numOutputs &&
+        outputs &&
         !memcmp(crtc->outputs, outputs, numOutputs * sizeof(RROutputPtr))) {
         return TRUE;
     }

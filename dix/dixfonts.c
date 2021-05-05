@@ -709,7 +709,8 @@ doListFontsAndAliases(ClientPtr client, LFclosurePtr c)
                  * is BadFontName, indicating the alias resolution
                  * is complete.
                  */
-                memmove(tmp_pattern, resolved, resolvedlen);
+                if (resolved)
+                    memmove(tmp_pattern, resolved, resolvedlen);
                 if (c->haveSaved) {
                     char *tmpname;
 
