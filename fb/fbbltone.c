@@ -643,7 +643,6 @@ fbBltOne24(FbStip * srcLine, FbStride srcStride,        /* FbStip units per scan
                                               & rightMask);
             }
             dst += dstStride;
-            src += srcStride;
         }
     }
     /* transparent copy */
