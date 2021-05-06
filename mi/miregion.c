@@ -345,7 +345,8 @@ Bool
 miRegionBreak (pReg)
     RegionPtr pReg;
 {
-    xfreeData (pReg);
+    if (pReg->data != &miEmptyData)
+        xfreeData (pReg);
     pReg->extents = miEmptyBox;
     pReg->data = &miBrokenData;
     return FALSE;
